@@ -133,6 +133,7 @@ brew update
 brew_tap 'gapple/services'
 
 brew_install_or_upgrade 'git'
+brew_install_or_upgrade 'git-flow-avh'
 brew_install_or_upgrade 'hub'
 brew_install_or_upgrade 'memcached'
 brew_install_or_upgrade 'mysql'
