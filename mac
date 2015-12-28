@@ -129,7 +129,6 @@ fi
 
 fancy_echo "Updating Homebrew formulas…"
 brew update
-
 brew_tap 'gapple/services'
 
 brew_install_or_upgrade 'git'
@@ -174,9 +173,10 @@ if ! command -v rbenv >/dev/null; then
   fi
 fi
 
+source $HOME/.rvm/scripts/rvm
+
 fancy_echo 'Updating RubyGems…'
 gem update --system
-
 gem_install_or_update 'bundler'
 
 fancy_echo "Configuring Bundler…"
