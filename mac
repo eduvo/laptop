@@ -127,13 +127,20 @@ else
   fancy_echo "Homebrew already installed. Skipping…"
 fi
 
+fancy_echo "Installing Oh My Zsh"
+curl -fsSL "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | zsh
+append_to_file "$HOME/.zshrc" 'ZSH_THEME="superjarin"'
+append_to_file "$HOME/.zshrc" 'plugins=(brew gitfast rvm)'
+append_to_file "$HOME/.zshrc" 'export PATH="$HOME/.bin:$PATH"'
+append_to_file "$HOME/.zshrc" 'export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting'
+append_to_file "$HOME/.zshrc" 'eval "$(direnv hook zsh)"'
+
 fancy_echo "Updating Homebrew formulas…"
 brew update
 brew_tap 'gapple/services'
 
 brew_install_or_upgrade 'git'
 brew_install_or_upgrade 'git-flow-avh'
-brew_install_or_upgrade 'hub'
 brew_install_or_upgrade 'memcached'
 brew_install_or_upgrade 'mysql'
 brew_install_or_upgrade 'pkg-config'
@@ -147,6 +154,14 @@ brew_install_or_upgrade 'wget'
 brew_install_or_upgrade 'mtr'
 brew_install_or_upgrade 'htop'
 brew_install_or_upgrade 'imagemagick'
+brew_install_or_upgrade 'direnv'
+brew_install_or_upgrade 'erlang'
+brew_install_or_upgrade 'elixir'
+brew_install_or_upgrade 'gitup'
+brew_install_or_upgrade 'most'
+brew_install_or_upgrade 'puma-dev'
+brew_install_or_upgrade 'sqlite'
+brew_install_or_upgrade 'node'
 
 fancy_echo "Restarting Services…"
 brew services restart memcached
@@ -154,25 +169,20 @@ brew services restart mysql
 brew services restart postgresql
 brew services restart redis
 
-# shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'eval "$(hub alias -s)"'
-
 append_to_file "$HOME/.gemrc" 'gem: --no-document'
 
-if ! command -v rbenv >/dev/null; then
-  if ! command -v rvm >/dev/null; then
-    fancy_echo 'Installing RVM and the latest Ruby…'
-    curl -L https://get.rvm.io | bash -s stable --ruby --auto-dotfiles --autolibs=enable
-    . ~/.rvm/scripts/rvm
+if ! command -v rvm >/dev/null; then
+  fancy_echo 'Installing RVM and the latest Ruby…'
+  curl -L https://get.rvm.io | bash -s stable --ruby --auto-dotfiles --autolibs=enable
+  . ~/.rvm/scripts/rvm
+else
+  local_version="$(rvm -v 2> /dev/null | awk '$2 != ""{print $2}')"
+  latest_version="$(curl -s https://raw.githubusercontent.com/wayneeseguin/rvm/stable/VERSION)"
+  if [ "$local_version" != "$latest_version" ]; then
+    fancy_echo 'Upgrading RVM…'
+    rvm get stable --auto-dotfiles --autolibs=enable --with-gems="bundler"
   else
-    local_version="$(rvm -v 2> /dev/null | awk '$2 != ""{print $2}')"
-    latest_version="$(curl -s https://raw.githubusercontent.com/wayneeseguin/rvm/stable/VERSION)"
-    if [ "$local_version" != "$latest_version" ]; then
-      fancy_echo 'Upgrading RVM…'
-      rvm get stable --auto-dotfiles --autolibs=enable --with-gems="bundler"
-    else
-      fancy_echo "Already using the latest version of RVM. Skipping…"
-    fi
+    fancy_echo "Already using the latest version of RVM. Skipping…"
   fi
 fi
 
@@ -192,13 +202,10 @@ brew_tap 'caskroom/cask'
 brew_install_or_upgrade 'brew-cask'
 brew_tap 'caskroom/versions'
 brew_cask_install 'flux'
-brew_cask_install 'github'
-brew_cask_install 'atom'
 brew_cask_install 'base'
 brew_cask_install 'colloquy'
 brew_cask_install 'dropbox'
 brew_cask_install 'geekbench'
-brew_cask_install 'github-desktop'
 brew_cask_install 'google-chrome'
 brew_cask_install 'kaleidoscope'
 brew_cask_install 'kindle'
@@ -209,14 +216,11 @@ brew_cask_install 'sequel-pro'
 brew_cask_install 'skype'
 brew_cask_install 'slack'
 brew_cask_install 'sourcetree'
-brew_cask_install 'teamviewer'
-brew_cask_install 'textmate'
-brew_cask_install 'textwrangler'
 brew_cask_install 'the-unarchiver'
 brew_cask_install 'tilemill'
-brew_cask_install 'virtualbox'
 brew_cask_install 'vlc'
 brew_cask_install 'xquartz'
+brew cask install 'rowanj-gitx'
 
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
@@ -224,15 +228,6 @@ fi
 
 append_to_file "$HOME/.rvmrc" 'rvm_auto_reload_flag=2'
 
-# display pwd in orange, current ruby version or gemset in green,
-# and set prompt character to $
-# shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-prompt) %{%f%}$ " }'
-
-# display directories and files in different colors when running ls
-append_to_file "$HOME/.zshrc" 'export CLICOLOR=1;'
-append_to_file "$HOME/.zshrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
-
-if [ ! -f "$HOME/.ssh/github_rsa.pub" ]; then
-  open ~/Applications/GitHub.app
-fi
+# Phoenix and related
+mix local.hex --force
+mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force

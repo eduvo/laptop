@@ -8,3 +8,23 @@ This script can be run with:
 
     curl --remote-name https://raw.githubusercontent.com/eduvo/laptop/master/mac
     sh mac 2>&1 | tee ~/laptop.log
+
+
+MG changes:
+
+1. added Oh My Zsh
+2. Removed brew hub
+3. Additional homebrew packages:
+direnv
+erlang
+elixir
+gitup
+most
+puma-dev
+sqlite
+node
+4. Remove check for rbenv (was choking with rbenv already installed)
+5. Don't install GH UI, atom, teamviewer, textmate, textwrangler, virtualbox
+6. remove color settings
+7. Add phoenix + related bits
+8. Add gitx
