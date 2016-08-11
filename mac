@@ -150,7 +150,7 @@ brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'memcached'
 brew_install_or_upgrade 'most'
 brew_install_or_upgrade 'mtr'
-brew_install_or_upgrade 'mysql'
+# brew_install_or_upgrade 'mysql'
 brew_install_or_upgrade 'node'
 brew_install_or_upgrade 'pkg-config'
 brew_install_or_upgrade 'postgresql'
@@ -162,6 +162,11 @@ brew_install_or_upgrade 'sqlite'
 brew_install_or_upgrade 'tree'
 brew_install_or_upgrade 'watch'
 brew_install_or_upgrade 'wget'
+
+#downlevel mysql
+brew_tap 'homebrew/versions'
+brew_install_or_upgrade 'mysql55'
+append_to_file "$HOME/.zshrc" 'export PATH="$PATH: /usr/local/opt/mysql55/bin"'
 
 fancy_echo "Restarting Services…"
 brew services restart memcached
@@ -231,3 +236,7 @@ append_to_file "$HOME/.rvmrc" 'rvm_auto_reload_flag=2'
 # Phoenix and related
 mix local.hex --force
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
+
+# Set up puma-dev
+sudo puma-dev -setup
+puma-dev -install
