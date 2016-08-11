@@ -29,3 +29,4 @@ node
 7. Add phoenix + related bits
 8. Add gitx
 9. downgrade mysql to 5.5
+10. Add iterm2
