@@ -151,12 +151,14 @@ brew_install_or_upgrade 'git-flow-avh'
 brew_install_or_upgrade 'gitup'
 brew_install_or_upgrade 'go'
 brew_install_or_upgrade 'htop'
+brew_install_or_upgrade 'icu4c'
 brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'memcached'
 brew_install_or_upgrade 'most'
 brew_install_or_upgrade 'mtr'
 brew_install_or_upgrade 'mysql'
 brew_install_or_upgrade 'node'
+brew_install_or_upgrade 'phantomjs'
 brew_install_or_upgrade 'pkg-config'
 brew_install_or_upgrade 'postgresql'
 brew_install_or_upgrade 'puma/puma/puma-dev'
@@ -253,14 +255,15 @@ append_to_file "$HOME/.rvmrc" 'rvm_auto_reload_flag=2'
 mix local.hex --force
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
 
-# Set up puma-dev
-sudo puma-dev -setup
-puma-dev -install
-
 # Create user for PostgreSQL
 # TODO: Version dependency is pretty fragile
-/usr/local/Cellar/postgresql/9.5.4/bin/createuser -s postgres
+# /usr/local/Cellar/postgresql/9.5.4/bin/createuser -s postgres
 
 # Show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles YES
 killall Finder /System/Library/CoreServices/Finder.app
+
+# Set up puma-dev
+sudo puma-dev -setup
+puma-dev -install
+
