@@ -131,9 +131,13 @@ fancy_echo "Installing Oh My Zsh"
 curl -fsSL "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | zsh
 append_to_file "$HOME/.zshrc" 'ZSH_THEME="superjarin"'
 append_to_file "$HOME/.zshrc" 'plugins=(brew gitfast rvm)'
-append_to_file "$HOME/.zshrc" 'export PATH="$HOME/.bin:$PATH"'
-append_to_file "$HOME/.zshrc" 'export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting'
 append_to_file "$HOME/.zshrc" 'eval "$(direnv hook zsh)"'
+append_to_file "$HOME/.zshrc" 'export PATH="$HOME/.bin:$PATH"'
+append_to_file "$HOME/.zshrc" 'export GOPATH="/Users/mike/gocode"'
+append_to_file "$HOME/.zshrc" 'export PATH="$PATH:/usr/local/sbin" # for RabbitMQ'
+append_to_file "$HOME/.zshrc" 'export PATH="$PATH:/usr/local/opt/go/libexec/bin" # for go get'
+append_to_file "$HOME/.zshrc" 'export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting'
+append_to_file "$HOME/.zshrc" 'test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"'
 
 fancy_echo "Updating Homebrew formulas…"
 brew update
