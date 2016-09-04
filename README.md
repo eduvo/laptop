@@ -21,7 +21,9 @@ direnv
 erlang
 elixir
 gitup
+go
 most
+prince
 puma-dev
 rabbitmq
 sqlite

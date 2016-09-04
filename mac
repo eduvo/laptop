@@ -145,6 +145,7 @@ brew_install_or_upgrade 'erlang'
 brew_install_or_upgrade 'git'
 brew_install_or_upgrade 'git-flow-avh'
 brew_install_or_upgrade 'gitup'
+brew_install_or_upgrade 'gem_install_or_update'
 brew_install_or_upgrade 'htop'
 brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'memcached'
@@ -163,6 +164,10 @@ brew_install_or_upgrade 'sqlite'
 brew_install_or_upgrade 'tree'
 brew_install_or_upgrade 'watch'
 brew_install_or_upgrade 'wget'
+
+# Prince
+brew_tap 'caius/prince'
+brew_install_or_upgrade 'prince'
 
 #downlevel mysql
 #brew_tap 'homebrew/versions'
@@ -227,7 +232,7 @@ brew_cask_install 'sequel-pro'
 brew_cask_install 'skype'
 brew_cask_install 'slack'
 brew_cask_install 'sourcetree'
-brew_cask_install sublime-text3
+brew_cask_install 'sublime-text3'
 brew_cask_install 'the-unarchiver'
 brew_cask_install 'tilemill'
 brew_cask_install 'vlc'
