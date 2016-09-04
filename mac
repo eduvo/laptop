@@ -150,7 +150,7 @@ brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'memcached'
 brew_install_or_upgrade 'most'
 brew_install_or_upgrade 'mtr'
-# brew_install_or_upgrade 'mysql'
+brew_install_or_upgrade 'mysql'
 brew_install_or_upgrade 'node'
 brew_install_or_upgrade 'pkg-config'
 brew_install_or_upgrade 'postgresql'
@@ -164,9 +164,9 @@ brew_install_or_upgrade 'watch'
 brew_install_or_upgrade 'wget'
 
 #downlevel mysql
-brew_tap 'homebrew/versions'
-brew_install_or_upgrade 'mysql55'
-append_to_file "$HOME/.zshrc" 'export PATH="$PATH: /usr/local/opt/mysql55/bin"'
+#brew_tap 'homebrew/versions'
+#brew_install_or_upgrade 'mysql55'
+#append_to_file "$HOME/.zshrc" 'export PATH="$PATH: /usr/local/opt/mysql55/bin"'
 
 fancy_echo "Restarting Services…"
 brew services restart memcached

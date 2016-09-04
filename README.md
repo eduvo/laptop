@@ -28,6 +28,5 @@ node
 6. remove color settings
 7. Add phoenix + related bits
 8. Add gitx
-9. downgrade mysql to 5.5
-10. Add iterm2
-11. Show hidden files by default
+9. Add iterm2
+10. Show hidden files by default
