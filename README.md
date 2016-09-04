@@ -36,3 +36,4 @@ node
 9. Add iterm2
 10. Show hidden files by default
 11. Add Alfred, Evernote, ST3, Navicat Premium
+12. Add Firefox Developer Edition
