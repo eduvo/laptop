@@ -31,3 +31,4 @@ node
 8. Add gitx
 9. Add iterm2
 10. Show hidden files by default
+11. Add Alfred, Evernote, ST3
