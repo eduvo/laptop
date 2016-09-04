@@ -8,7 +8,7 @@ The Laptop Builder automatically pre-installs common application dependencies, b
 
 This script can be run with:
 
-    curl --remote-name https://raw.githubusercontent.com/eduvo/laptop/master/mac
+    curl --remote-name https://raw.githubusercontent.com/eduvo/laptop/mike_g/mac
     sh mac 2>&1 | tee ~/laptop.log
 
 
