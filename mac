@@ -241,3 +241,7 @@ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoe
 # Set up puma-dev
 sudo puma-dev -setup
 puma-dev -install
+
+# Show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles YES
+killall Finder /System/Library/CoreServices/Finder.app
