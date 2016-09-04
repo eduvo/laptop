@@ -1,3 +1,5 @@
+*NOTE: THIS BRANCH CUSTOMIZED FOR MIKE G, MAY NOT BE APPROPRIATE FOR EVERYONE*)
+
 # Laptop Builder
 
 The Faria Systems Laptop Builder is a single script which should be executed after an OS X installation has been provisioned on a laptop or desktop, intended for developer use.
@@ -31,4 +33,4 @@ node
 8. Add gitx
 9. Add iterm2
 10. Show hidden files by default
-11. Add Alfred, Evernote, ST3
+11. Add Alfred, Evernote, ST3, Navicat Premium
