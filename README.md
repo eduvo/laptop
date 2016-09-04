@@ -21,6 +21,7 @@ elixir
 gitup
 most
 puma-dev
+rabbitmq
 sqlite
 node
 4. Remove check for rbenv (was choking with rbenv already installed)

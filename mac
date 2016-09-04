@@ -156,6 +156,7 @@ brew_install_or_upgrade 'pkg-config'
 brew_install_or_upgrade 'postgresql'
 brew_install_or_upgrade 'puma/puma/puma-dev'
 brew_install_or_upgrade 'qt'
+brew_install_or_upgrade 'rabbitmq'
 brew_install_or_upgrade 'redis'
 brew_install_or_upgrade 'shellcheck'
 brew_install_or_upgrade 'sqlite'
@@ -172,6 +173,7 @@ fancy_echo "Restarting Services…"
 brew services restart memcached
 brew services restart mysql
 brew services restart postgresql
+brew services restart rabbitmq
 brew services restart redis
 
 append_to_file "$HOME/.gemrc" 'gem: --no-document'
