@@ -248,6 +248,10 @@ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoe
 sudo puma-dev -setup
 puma-dev -install
 
+# Create user for PostgreSQL
+# TODO: Version dependency is pretty fragile
+/usr/local/Cellar/postgresql/9.5.4/bin/createuser -s postgres
+
 # Show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles YES
 killall Finder /System/Library/CoreServices/Finder.app
